@@ -1,0 +1,437 @@
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0,0,0,.5);
+  box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+body {
+	background: #444;
+	color: white;
+	font-family: sans-serif;
+	margin: 0px;
+  animation: fadeIn ease 1.5s;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.foreground {
+	position: absolute;
+	left: 5px;
+	right: 5px;
+	text-align: center;
+  top: 5px;
+  bottom: 5px;
+}
+
+#prevImage {
+  display: none;
+}
+
+#helpOverlay {
+  background-color: rgba(50, 50, 50, 0.95);
+  border-radius: 1em;
+  bottom: 25px;
+  color: yellow;
+  display: none;
+  font-size: 1.2em;
+  left: 50px;
+  overflow: scroll;
+  padding: 25px 50px 25px 50px;
+  position: fixed;
+  right: 50px;
+  top: 25px;
+}
+
+#helpOverlay.opened {
+  display: block;
+}
+
+.helpSection {
+  display: inline-block;
+}
+
+.helpSection h2 {
+  color: orange;
+  font-size: 18px;
+  text-align: center;
+}
+
+dl.helplist {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  max-width: 400px;
+  min-width: 300px;
+  overflow: visible;
+}
+
+dl.helplist dt {
+  color: orange;
+  flex: 0 0 33%;
+  font-weight: bold;
+  padding-bottom: 5px;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+dl.helplist dt span.separator {
+  font-weight: normal;
+  opacity: 0.75;
+}
+
+dl.helplist dd {
+  flex: 0 0 67%;
+  margin-left: auto;
+  padding-bottom: 5px;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#helpOverlay a {
+  color: inherit;
+}
+
+#nav {
+  position: absolute;
+  right: 0;
+  top: 1px;
+  white-space: nowrap;
+  width: 11.5em;
+}
+
+.navbutton {
+  background-color: black;
+  border-color: grey;
+  border-radius: 5px;
+  color: grey;
+  cursor: pointer;
+  font-weight: bold;
+  height: 2em;
+  padding: 0;
+  user-select: none;
+  width: 2.5em;
+}
+
+.navbutton:disabled {
+  color: #444;
+}
+
+.navbutton:hover:not([disabled]), .navbutton:focus {
+  background-color: #444;
+  border-color: yellow;
+  color: yellow;
+}
+
+#close {
+	position: absolute;
+	right: -30px;
+	top: -5px;
+}
+
+#header {
+  height: 30px;
+  text-align: left;
+  z-index: 5;
+}
+
+#progress {
+  position: absolute;
+  left: 2.5em;
+  height: 1.25em;
+  right: 12em;
+  top: 0.33em;
+  text-align: right;
+}
+
+.meter {
+  transition: width .3s;
+}
+
+#background {
+  background-size: 100% 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 20px;
+}
+
+/* Menu styling */
+
+.menuButton {
+  background-color: black;
+  border: solid 1px grey;
+  border-radius: 5px;
+  color: grey;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0;
+  text-decoration: none;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+.menuButton:hover, .menuButton:focus {
+  border: solid 1px yellow;
+  color: yellow;
+}
+
+#menu {
+  display: none;
+  opacity: 0.875;
+  text-align: left;
+}
+
+#menu.opened {
+  display: block;
+}
+
+.menuSeparator {
+  border-top: solid .1px yellow;
+}
+
+span.subMenuArrow,
+span.menuItemKey {
+  float: right;
+  pointer-events: none;
+}
+
+span.menuCheckmark {
+  float: left;
+  pointer-events: none;
+  width: 1.5em;
+}
+
+.fullScreenOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+ul.menuItems {
+  background-color: black;
+  border: solid 1px yellow;
+  border-radius: 5px 5px 5px 5px;
+  left: 5px;
+  list-style: none;
+  margin-top: 2px;
+  position: absolute;
+  top: 2em;
+  width: 12em;
+}
+
+ul.menuItems#viewerContextMenuItems {
+  width: 8em;
+}
+
+ul.menuItems li {
+  margin-left: -40px;
+}
+
+.menuItem {
+  background-color: black;
+  border: none;
+  color: yellow;
+  cursor: pointer;
+  font-size: 1em;
+  margin: 2px;
+  padding: 2px 5px;
+  text-align: left;
+  width: 98%;
+}
+
+#menu-open-local-files-input {
+  display: none;
+}
+
+.menu-label {
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: #444;
+}
+
+#menu-open-local-files input {
+  cursor: pointer;
+  font-size: 1em;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+div.pageDiv {
+  overflow: scroll;
+  position: absolute;
+}
+
+.pageDiv canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.textDiv {
+  background-color: #999;
+}
+
+#mainText {
+  text-align: left;
+  width: 90%;
+  position: relative;
+  top: 10px;
+  background: #ccc;
+  color: black;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+button:focus {
+  outline: solid 2px yellow;
+}
+
+#header.preview {
+  transition: opacity 1s ease;
+  opacity: 0.7;
+}
+
+#header.previewout {
+  opacity: 0;
+}
+
+#readingStack {
+  border-color: grey;
+  bottom: 1.5em;
+  color: grey;
+  cursor: pointer;
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  margin-left: -21em;
+  opacity: 0.875;
+  position: fixed;
+  left: 0px;
+  top: 2.5em;
+  user-select: none;
+  transition: margin-left .2s;
+}
+
+#readingStackButton {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+  background-color: black;
+  border-color: inherit;
+  border-radius: 0 5px 5px 0;
+  border-style: solid;
+  border-width: 1px;
+  border-left: none;
+  color: inherit;
+  font-family: Cambria;
+  font-size: 40px;
+  height: 1.25em;
+  margin-left: -1px;
+  padding: 0;
+  user-select: none;
+  width: 0.75em;
+  z-index: 100;
+}
+
+#readingStackButton:disabled {
+  color: #444;
+}
+
+#readingStackButton:hover:not([disabled]), #readingStackButton:focus {
+  background-color: #444;
+  color: yellow;
+  border-color: yellow;
+}
+
+#readingStackContents {
+  background-color: black;
+  border-color: inherit;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  color: inherit;
+  height: 100%;
+  overflow: scroll;
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+  width: 20em;
+  z-index: 1;
+}
+
+#readingStack.opened {
+  border-color: yellow;
+  color: yellow;
+  margin-left: 0;
+}
+
+.readingStackBookInner {
+  float: left;
+  max-width: 280px;
+  overflow: hidden;
+  pointer-events: none;
+  text-overflow: ellipsis;
+}
+
+.readingStackBook {
+  border-bottom: solid 1px grey;
+  border-top: solid 1px black;
+  overflow: hidden;
+  padding: 4px;
+}
+
+.readingStackBook:hover {
+  background-color: #444;
+  border-bottom: solid 1px yellow;
+  border-top: solid 1px yellow;
+}
+
+/* TODO: Remove current class and use focus for reading stack. */
+.menuItem:focus,
+.readingStackBook.current {
+  background-color: #cc2929;
+  outline: solid 2px yellow;
+}
+
+.readingStackBook.loaded {
+  font-weight: bold;
+}
+
+.readingStackBookCloseButton {
+  color: black;
+  float: right;
+  font-weight: bold;
+}
+
+.readingStackBookCloseButton:hover {
+  color: yellow;
+}
+
+[draggable] {
+  user-select: none;
+}
+
+.readingStackBook.dragging {
+  opacity: 0.4;
+}
+
+.dropTarget {
+  border-top: solid 2px yellow;
+}

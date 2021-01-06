@@ -8,6 +8,44 @@ Hallo dear users. You can make a website from your existing Calibre Library. It 
 ## Local PHP Dev Environment
 You can easily setup a local php environment using Xampp - > https://www.apachefriends.org/index.html 
 
+### Setup Caliber virtual path
+
+You have to setup a virtual path to your calibre library on your hard disk if it is not in side xampp/htdocs folder.
+1. Go to xampp/apache/conf and open httpd.conf in a text editor
+2. Add following at the end 
+
+Alias "/caliber" "e:/Calibre-Server-Books"
+<Directory "e:/Calibre-Server-Books">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.4/mod/core.html#options
+    # for more information.
+    #
+    Options Indexes FollowSymLinks Includes ExecCGI
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   AllowOverride FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Require all granted
+</Directory>
+
+3. Note: replace the path as your calibre library location.
+4. Now restart your apache server
+
 ## Calibre Database Location Setup
 You can set the location of your existing calibre library in db-guru.php file on line 3
 

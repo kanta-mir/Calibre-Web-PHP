@@ -15,7 +15,9 @@ You have to setup a virtual path to your calibre library on your hard disk if it
 2. Add following at the end 
 
 Alias "/caliber" "e:/Calibre-Server-Books"
+
 <Directory "e:/Calibre-Server-Books">
+
     #
     # Possible values for the Options directive are "None", "All",
     # or any combination of:
@@ -41,6 +43,7 @@ Alias "/caliber" "e:/Calibre-Server-Books"
     # Controls who can get stuff from this server.
     #
     Require all granted
+    
 </Directory>
 
 3. Note: replace the path as your calibre library location.

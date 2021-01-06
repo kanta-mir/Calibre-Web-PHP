@@ -23,11 +23,14 @@ if ($search_type == "name") {
     $books = $myPDO->query("select *, books.id from books, books_tags_link where books.id = books_tags_link.book and books_tags_link.tag  = $search_text");
     $limit_check = $myPDO->query("select count(*) as count from  books, books_tags_link where books.id = books_tags_link.book and books_tags_link.tag  = $search_text");
 } else if ($search_type == "publisher") {
-    $books = $myPDO->query("select *, books.id from books, books_publishers_link where books.id = books_publishers_link.book and books_publishers_link.publisher  = $search_text");
+    $books = $myPDO->query("select *, books.id from books, books_publishers_link where books.id = books_publishers_link.book and books_publishers_link.publisher = $search_text");
     $limit_check = $myPDO->query("select count(*) as count from  books, books_publishers_link where books.id = books_publishers_link.book and books_publishers_link.publisher  = $search_text");
 } else if ($search_type == "format") {
     $books = $myPDO->query("select *, books.id from books, data where books.id = data.book and data.format  like '%$search_text%'");
     $limit_check = $myPDO->query("select count(*) as count from books, data where books.id = data.book and data.format = '%$search_text%'");
+} else if ($search_type == "language") {
+    $books = $myPDO->query("select *, books.id from books, books_languages_link where books.id = books_languages_link.book and books_languages_link.lang_code  = $search_text");
+    $limit_check = $myPDO->query("select count(*) as count from books, books_languages_link where books.id = books_languages_link.book and books_languages_link.lang_code = $search_text");
 } else {
     // ------------ 
 }

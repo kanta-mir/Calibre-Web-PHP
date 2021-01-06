@@ -13,6 +13,7 @@ foreach ($books as $row) {
     }
     // get book language 
     $lang_code = '';
+    $lang_no = '';
     $pdf_language =  $myPDO->query("select * from books_languages_link where book = $id");
     foreach ($pdf_language as $pdf_lang) {
         $lang_no = $pdf_lang['lang_code'];
@@ -159,36 +160,37 @@ foreach ($books as $row) {
     echo "<div class='bg-primary text-white p-2 shadow2'>";
     if ($pdf_format == 'PDF') {
         echo "
-        <a class='text-white' title='View Raw Viewer' href='views.php?f=$pdf_link' target='_blank' >
+        <a class='text-white' title='View Raw Viewer' href='views.php?f=$pdf_link' target='_blank' data-toggle='tooltip'>
             <i class='fa fa-book-reader mx-1' style='font-size:24px'></i>
         </a>";
     }
-
     echo "
-                <a class='text-white' title='Download - $pdf_size' href='$pdf_link' target='_blank' download>
+                <a class='text-white' title='Download - $pdf_size' href='$pdf_link' target='_blank' download data-toggle='tooltip'>
                     <i class='fa fa-download  mx-1' style='font-size:24px'></i>
                 </a>
-                <a class='text-white' title='Link' href='$pdf_link' target='_blank'>
+                <a class='text-white' title='Link' href='$pdf_link' target='_blank'  data-toggle='tooltip'>
                     <i class='fa fa-link  mx-1' style='font-size:24px'></i>
                 </a>
                 <a data-toggle='modal' class='text-white bookIndex' title='Book Index' href='#' data-target='bookIndex'>
                     <i class='fa fa-list  mx-1' style='font-size:24px'></i>
                 </a>
-
                 <a data-toggle='modal' 
-                data-id         = '$id' 
-                data-title      = '$title'
-                data-pdfsize    = '$pdf_size'
-                data-format     = '$pdf_format'
-                data-thumb      = '$image_path'
-                data-pubdate    = '$pubdate'
-                data-lang       = '$lang_code'
-                data-rating     = '$book_rating'
-                data-series     = '$book_series'
-                data-seriesid   = '$book_series_id'
-                data-tags       = '$book_tags'
-                data-publisher  = '$book_publisher'
-                title='Book Details' class='open-AddBookDialog text-white' href='#' data-target='exampleModalCenter'>
+                    data-id         = '$id' 
+                    data-title      = '$title'
+                    data-pdfsize    = '$pdf_size'
+                    data-format     = '$pdf_format'
+                    data-thumb      = '$image_path'
+                    data-pubdate    = '$pubdate'
+                    data-lang       = '$lang_code'
+                    data-langid     = '$lang_no'
+                    data-rating     = '$book_rating'
+                    data-series     = '$book_series'
+                    data-seriesid   = '$book_series_id'
+                    data-tags       = '$book_tags'
+                    data-publisher  = '$book_publisher'
+                    data-publisherid  = '$book_publishers_id'
+                    title='Book Details' class='open-AddBookDialog text-white' href='#' data-target='exampleModalCenter'
+                >
                     <i class='fa fa-info  mx-2' style='font-size:24px'></i>
                 </a>
             </div>";
@@ -196,7 +198,6 @@ foreach ($books as $row) {
     echo "</div>";
 }
 echo "</div>";
-
 ?>
 
 <!-- Modal Book Details -->
@@ -231,11 +232,11 @@ echo "</div>";
                             </tr>
                             <tr>
                                 <td>Language</td>
-                                <td><a href=''><span name='bookLang' id='bookLang'></span></a></td>
+                                <td><a href='' id="bookLangLink"><span name='bookLang' id='bookLang'></span></a></td>
                             </tr>
                             <tr>
                                 <td>Rating</td>
-                                <td><span name='bookLang' id='bookRating'></span></td>
+                                <td><a href='' id='bookRatingsLink'><span name='bookLang' id='bookRating'></span></a></td>
                             </tr>
                             <tr>
                                 <td>Series</td>
@@ -243,15 +244,15 @@ echo "</div>";
                             </tr>
                             <tr>
                                 <td>Tags</td>
-                                <td><a href=''><span name='bookTags' id='bookTags'></span></a></td>
+                                <td><a href='' id='bookTagsLink'><span name='bookTags' id='bookTags'></span></a></td>
                             </tr>
                             <tr>
                                 <td>Format</td>
-                                <td><a href=''><span name='bookFormat' id='bookFormat'></span></a></td>
+                                <td><a href='' id='bookFormatsLink'><span name='bookFormat' id='bookFormat'></span></a></td>
                             </tr>
                             <tr>
                                 <td>Publisher</td>
-                                <td><a href=''><span name='bookPublisher' id='bookPublisher'></span></a></td>
+                                <td><a href='' id='bookPublishersLink'><span name='bookPublisher' id='bookPublisher'></span></a></td>
                             </tr>
                         </table>
                     </div>

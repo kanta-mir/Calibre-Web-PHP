@@ -29,12 +29,12 @@
         $start = $offset + 1;
         $end = min(($offset + $limit), $total);
         $prevLink = ($page > 1) ? '<span style="background: #0040d9; padding: 0;" class="btn">
-        <a class="text-white display-5 p-3" href="?page=1" title="First page" >
+        <a class="text-white display-5 p-3" href="?page=1" title="First page"   data-toggle="tooltip">
             <i class="fas fa-angle-double-left"></i>
         </a> 
         </span>
         <span style="background: #0040d9; padding:0px" class="mr-2 btn">
-        <a class="text-white p-3" href="?page=' . ($page - 1) . '" title="Previous page">
+        <a class="text-white p-3" href="?page=' . ($page - 1) . '" title="Previous page"  data-toggle="tooltip">
             <i class="fas fa-angle-left"></i>
         </a> 
         </span>
@@ -51,12 +51,12 @@
         </span>';
         $nextlink = ($page < $total_pages) ? '
         <span style="background: #0040d9; padding:0px" class="mr-1 btn">
-        <a class="text-white p-3" href="?page=' . ($page + 1) . '" title="Next page">
+        <a class="text-white p-3" href="?page=' . ($page + 1) . '" title="Next page" data-toggle="tooltip">
             <i class="fas fa-angle-right"></i>
         </a> 
         </span>
         <span style="background: #0040d9; padding:0px" class="mr-2 btn">
-        <a class="text-white p-3" href="?page=' . $total_pages . '" title="Last page">
+        <a class="text-white p-3" href="?page=' . $total_pages . '" title="Last page"  data-toggle="tooltip">
             <i class="fas fa-angle-double-right"></i>
         </a>
         </span>
@@ -78,7 +78,7 @@
         <div id="paging" style="background-color:#829fe3;" class="text-center w-100 text-white my-2 p-2">
             <p class="m-0">', $prevLink, ' Page ', $page, ' of ', $total_pages, ' ', $start, '-', $end, ' of ', $total, ' results ', $nextlink, ' 
                 <input id="page-no" type="text" class="text-center form-control " style="width:60px;display: inline;" value=', $page, '>
-                <button onClick="openLink()" class="btn btn-primary my-2" href="#', $page , '">Go</button>
+                <button onClick="openLink()" class="btn btn-primary my-2" href="#', $page , '" data-toggle="tooltip" title="Goto Page"><i class="fas fa-bolt"></i></i></button>
             </p>
         </div>';
         

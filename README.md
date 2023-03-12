@@ -64,6 +64,6 @@ Password : pass
 
 ## About
 
-If you want to contact me you can email me at kanta_mir@yahoo.com
+If you want to contact me you can email me at info@amuslim.org
 
 Thanks
